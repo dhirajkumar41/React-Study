@@ -1,0 +1,43 @@
+Youtube video 
+
+https://www.youtube.com/watch?v=DLX62G4lc44
+
+
+We will learn following - 
+
+1. React Components
+2. JSX
+3. Props (Properties)
+4. State
+5. Event Handling
+6. Lifecycle Methods
+
+
+We should know -
+
+1. HTML 5
+2. CSS 3
+3. Javascript
+4. little bit of ES6
+
+
+Why React instead of vanilla javascript to build web applications? (vanilla means basic or pure. vanilla javascript means pure javacript)
+
+1. React is faster than vanilla javascript
+  - React uses virtual dom which helps it to work faster
+  - What is virtual DOM - https://www.youtube.com/watch?v=BYbgopx44vo
+  
+
+2. Reusable web components 
+   - we can build react components and resuse them in our code
+   - Ex. Bootstrap navbar, in reality it has 20-30 lines of code but we can create a react components out of it and reuse it anywhere in our code.
+    like 
+        <body>
+           <!-- Below is the bootstrap navbar component -->
+          <thisIsOurBootstrapNavbar />  
+        </body>
+        
+3. React is maintained by Facebook, so its latest technology and very popular.
+
+
+   
