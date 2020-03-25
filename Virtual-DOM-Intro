@@ -1,0 +1,3 @@
+
+Virtual DOM (VDOM) is a programming concept where a virtual representation of UI is kept in memory
+and synced with real dom. This process is called reconciliation. 
