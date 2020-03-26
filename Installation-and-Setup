@@ -1,0 +1,6 @@
+
+We need to have nodejs installed on our machine. Go to https://nodejs.org and download the latest version. 
+We need this because we use npm (node package manager) to manage all the dependencies and packages we use in our project.
+
+
+https://blog.cloudboost.io/how-to-setup-your-first-react-app-7faf81db8bce
