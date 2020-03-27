@@ -4,3 +4,9 @@ We need this because we use npm (node package manager) to manage all the depende
 
 
 https://blog.cloudboost.io/how-to-setup-your-first-react-app-7faf81db8bce
+
+
+npm install -g create-react-app 
+create-react-app my-app 
+cd my-app 
+npm start
