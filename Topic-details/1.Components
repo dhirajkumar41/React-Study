@@ -1,0 +1,13 @@
+React Components. 
+
+Components are independent and reusable bits of code. 
+They serve the same purpose as JavaScript functions, 
+but work in isolation and returns HTML via a render function.
+
+There are 2 types of components - 
+Class component and Functional component.
+
+Class component - 
+
+
+
