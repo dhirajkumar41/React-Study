@@ -1,0 +1,139 @@
+From Parent to Child with Props
+
+The simplest data flow direction is down the hierarchy, from parent to child. React's mechanism for accomplishing this is called props. A React component is a function that receives a parameter called props. Props is a bag of data, an object that can contain any number of fields. 
+
+function BookList() {
+  const list = [
+    { title: 'A Christmas Carol', author: 'Charles Dickens' },
+    { title: 'The Mansion', author: 'Henry Van Dyke' },
+    // ...
+  ]
+
+  return (
+    <ul>
+      {list.map((book, i) => <Book title={book.title} author={book.author} key={i} />)}
+    </ul>
+  )
+}
+function Book(props) {
+  return (
+    <li>
+      <h2>{props.title</h2>
+      <div>{props.author}</div>
+    </li>
+  )
+}
+
+
+
+From Child to Parent with Callbacks
+
+For a child to talk back to a parent (unacceptable, I know!), it must first receive a mechanism to communicate back from its parent. As we learned, parents pass data to children through props. A "special" prop of type function can be passed down to a child. At the time of a relevant event (eg, user interaction) the child can then call this function as a callback. 
+
+class Parent extends React.Component {     
+constructor(props) {         
+super(props);         
+this.state = { count: 0 }; 
+ 
+        this.outputEvent = this.outputEvent.bind(this);     
+		}     
+		outputEvent(event) {         // the event context comes from the Child        
+		this.setState({ count: this.state.count++ });     } 
+ 
+    render() {         
+	const variable = 5;         
+	return (             
+	<div>                 
+	Count: { this.state.count }                 
+	<Child clickHandler={this.outputEvent} />             
+	</div>         
+	);     
+	} 
+	} 
+ 
+class Child extends React.Component {     
+render() {         
+return (             
+<button onClick={this.props.clickHandler}>                 
+Add One More             
+</button>         
+);     
+} 
+} 
+
+ A functional component is just a plain JavaScript function which accepts props as an argument and returns a React element.
+ A class component requires you to extend from React.Component and create a render function which returns a React element. This requires more code but will also give you some benefits which you will see later on.
+ 
+ Functional Components - 
+=> Functional because they are basically functions
+
+=> Stateless because they do not hold and/or manage state
+
+=> Presentational because all they do is output UI elements
+
+function Hello(props){
+   return <div>Hello {props.name}</div>
+}
+const Hello = ({name}) => <div>Hello {name}</div>
+
+
+
+Class Components
+=> Class because they are basically classes
+
+=> Smart because they can contain logic
+
+=> Stateful because they can hold and/or manage local state
+
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+
+
+
+
+Component Constructor
+The constructor function is also where you honor the inheritance of the parent component by including the super() statement, which executes the parent component's constructor function, and your component has access to all the functions of the parent component.
+class Car extends React.Component {
+  constructor() {
+    super();
+    this.state = {color: "red"};
+  }
+  render() {
+    return <h2>I am a {this.state.color} Car!</h2>;
+  }
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

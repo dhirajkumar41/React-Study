@@ -1,0 +1,371 @@
+class App extends React.Component{
+  render(){
+    return(
+      <div>
+        <Greet name='xys' hero = 'gg11'/>
+        <Greet name = 'jrjhef' hero='343'/>
+      </div>
+    );
+  }
+}
+const Greet =(props) =>{
+  console.log(props);
+  return <h1>hello{props.name}{props.hero}</h1>;
+}
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+
+
+class App extends React.Component{
+  render(){
+    return(
+      
+        <Welcome name='xys' hero = 'gg11'>
+          <Welcome name='xys' hero = 'gg11'>
+      </div>
+    );
+  }
+}
+class welcome extends React.Component{
+  render(){
+    return <h1>{this.props.name}{this.props.hero}</h1>;
+    
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+
+
+2. class App extends React.Component{
+  render(){
+    return(
+      
+        <Welcome name='xys' hero = 'gg11'/>
+          <Welcome name='xys' hero = 'gg11'/>
+      </div>
+    );
+  }
+}
+        
+class welcome extends React.Component{
+  render(){
+    const {name, hero} = this.props;
+    //for state
+    //const{state1, state2} = this.state;
+    return <h1>{name}{hero}</h1>
+    
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+
+
+
+state-
+1. class Welcome extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = ({
+      count: 0
+    })
+  }
+  increment(){
+    this.setState = (
+      {
+      count : this.state.count+1
+      }, 
+      ()=>{
+      console.log(this.state.count)
+    }
+      )
+  }
+  render() {
+    return(
+      <div>
+      <h1>Count-{this.state.count}</h1>
+      <button onClick={()=>this.increment()}>Increment
+        </button>
+      </div>
+    ) 
+  }
+}
+
+  ReactDOM.render(
+    <Welcome />,
+    document.getElementById('root')
+  );
+
+2. class Welcome extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = ({
+      count: 0
+    })
+  }
+  increment(){
+    // this.setState = (
+    //   {
+    //   count : this.state.count+1
+    //   }, 
+    //   ()=>{
+    //   console.log(this.state.count)
+    // }
+    //   )
+}
+
+  ReactDOM.render(
+    this.setState((prevState,props) => ({
+      count: prevState.count+1
+    }))
+  }
+  incrementFive(){
+    this.increment()
+    this.increment()
+    this.increment()
+    this.increment()
+    this.increment()
+  }
+  render() {
+    return(
+      <div>
+      <h1>Count-{this.state.count}</h1>
+      <button onClick={()=>this.incrementFive()}>Increment
+        </button>
+      </div>
+    ) 
+  }
+    <Welcome />,
+    document.getElementById('root')
+  );
+
+
+Destructuring props and state
+
+1. class App extends React.Component{
+  render(){
+    return(
+      <div>
+        <Greet name='xys' hero = 'gg11'/>
+        <Greet name = 'jrjhef' hero='343'/>
+      </div>
+    );
+  }
+}
+// const Greet = ({name, hero})=>{
+//    return <h1>hello{name}{hero}</h1>;
+// }
+const Greet = props=>{
+  const{name, hero} = props;
+   return <h1>hello{name}{hero}</h1>;
+}
+
+  ReactDOM.render(
+    <App/>,
+    document.getElementById('root')
+  );
+2.
+class App extends React.Component{
+  render(){
+    return(
+      
+        <Welcome name='xys' hero = 'gg11'/>
+          <Welcome name='xys' hero = 'gg11'/>
+      </div>
+    );
+  }
+}
+        
+class welcome extends React.Component{
+  render(){
+    const {name, hero} = this.props;
+    //for state
+    //const{state1, state2} = this.state;
+    return <h1>{name}{hero}</h1>
+    
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+
+
+Event Handling
+for function-
+class App extends React.Component{
+  render(){
+    return(
+        <ClickEvent />
+    );
+  }
+}
+      
+function ClickEvent(){
+   function ClickHandler(){
+    console.log('Button clicked')
+  } 
+    return (
+      <div>
+      <button onClick = {ClickHandler}>Click</button>
+       </div> 
+    )
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+
+
+for class -
+class App extends React.Component{
+  render(){
+    return(
+        <ClickEvent />
+    );
+  }
+}
+      
+class ClickEvent extends React.Component{
+ClickHandler(){
+    console.log('Button clicked')
+  } 
+  render(){
+    return (
+      <div>
+      <button onClick = {this.ClickHandler}>Click</button>
+       </div> 
+    )
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+
+
+Binding Event Handlers-
+1.binding in render - <button onClick= {this.Clickhandler.bind(this)}>Click</button>
+2.Arrow function in render-  <button onClick ={() => this.Clickhandler()}>Click</button>
+3.binding in constructor- <button onClick ={this.Clickhandler}>Click</button>
+class App extends React.Component{
+  render(){
+    return(
+        <ClickEvent />
+    );
+  }
+}
+      
+class ClickEvent extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      message:'on see'
+    }
+    this.Clickhandler = this.Clickhandler.bind(this)
+  }
+  Clickhandler(){
+    this.setState = (
+      {
+      message : 'hello'
+    }
+    )
+  }
+  render(){
+    return (
+      <div>
+        <h1>{this.state.message}</h1>
+        <button onClick ={this.Clickhandler}>Click</button>
+       </div> 
+    )
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+4.class properties arrow function-
+class App extends React.Component{
+  render(){
+    return(
+        <ClickEvent />
+    );
+  }
+}
+      
+class ClickEvent extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      message:'on see'
+    }
+  }
+  Clickhandler = () =>{
+    this.setState = (
+      {
+      message : 'hello'
+    }
+    )
+  }
+  render(){
+    return (
+      <div>
+        <h1>{this.state.message}</h1>
+        <button onClick ={this.Clickhandler}>Click</button>
+       </div> 
+    )
+  }
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
+
+
+
+Method as Props-
+class Parent extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = ({
+      parentName : 'Parent'
+    })
+  this.GreetParent = this.GreetParent.bind(this)
+  }
+GreetParent(childName){
+  alert(childName)
+ 
+}
+render(){
+  return(
+    <Child  GreetParent ={ this.GreetParent} />
+  )
+}
+}
+function Child(props){
+  return(
+    <div>
+      <button onClick = {()=> props.GreetParent('child')}>click</button>
+      </div>
+  )
+}
+ReactDOM.render(
+  <Parent />,
+  document.getElementById('root')
+);
+
+
+
+Conditional Rendering -

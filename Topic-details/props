@@ -1,0 +1,103 @@
+React allows us to pass information to a Component using something called props (stands for properties). Props are basically kind of global variable or object. 
+
+class DemoComponent extends React.Component{ 
+    render(){ 
+        return( 
+  
+                <div> 
+                    {/*accessing information from props */} 
+                    <h2>Hello {this.props.user}</h2> 
+                    <h3>Welcome to GeeksforGeeks</h3> 
+                </div> 
+            ); 
+    } 
+} 
+  
+ReactDOM.render( 
+    // passing props 
+    <DemoComponent user = "Harsh Agarwal" />,  
+    document.getElementById("root") 
+); 
+
+pass props to a function-based component=>
+function DemoComponent(props){ 
+    return( 
+        <div> 
+            {/*accessing information from props */} 
+            <h2>Hello {props.user}</h2> 
+            <h3>Welcome to GeeksforGeeks</h3> 
+         </div> 
+    ); 
+} 
+  
+ReactDOM.render( 
+    // passing props 
+    <DemoComponent user = "Harsh Agarwal" />,  
+    document.getElementById("root") 
+); 
+
+Passing information from one component to other=>
+
+This is one of the coolest features of React. We can make components to interact among themselves. 
+We will consider two components Parent and Children to explain this. 
+We will pass some information as props from our Parent component to the Child component.
+We can pass as many props as we want to a component.
+class Parent extends React.Component{ 
+    render(){ 
+        return( 
+                <div> 
+                    <h2>You are inside Parent Component</h2> 
+                    <Child name="User" userId = "5555"/> 
+                </div> 
+            ); 
+    } 
+} 
+  
+// Child Component 
+class Child extends React.Component{ 
+    render(){ 
+        return( 
+                <div> 
+                    <h2>Hello, {this.props.name}</h2> 
+                    <h3>You are inside Child Component</h3> 
+                    <h3>Your user id is: {this.props.userId}</h3> 
+                </div> 
+            ); 
+    } 
+} 
+  
+ReactDOM.render( 
+    // passing props 
+    <Parent />,  
+    document.getElementById("root") 
+); 
+
+
+defaultProps=>
+
+import React from 'react'; 
+import ReactDOM from 'react-dom'; 
+  
+// Component 
+class ExampleClass extends React.Component{ 
+    render(){ 
+        return( 
+                <div> 
+                    {/* using default prop - title */} 
+                    <h1>This is {this.props.title}'s Website!</h1> 
+                </div> 
+            ); 
+    } 
+} 
+  
+// Creating default props for  
+// ExampleClass Component 
+ExampleClass.defaultProps = { 
+    title: "GeeksforGeeks"
+} 
+  
+ReactDOM.render( 
+    <ExampleClass />,  
+    document.getElementById("root") 
+); 
+
