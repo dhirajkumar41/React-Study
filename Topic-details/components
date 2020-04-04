@@ -1,6 +1,9 @@
 From Parent to Child with Props
 
-The simplest data flow direction is down the hierarchy, from parent to child. React's mechanism for accomplishing this is called props. A React component is a function that receives a parameter called props. Props is a bag of data, an object that can contain any number of fields. 
+The simplest data flow direction is down the hierarchy, from parent to child. 
+React's mechanism for accomplishing this is called props. 
+A React component is a function that receives a parameter called props. 
+Props is a bag of data, an object that can contain any number of fields. 
 
 function BookList() {
   const list = [
@@ -28,7 +31,11 @@ function Book(props) {
 
 From Child to Parent with Callbacks
 
-For a child to talk back to a parent (unacceptable, I know!), it must first receive a mechanism to communicate back from its parent. As we learned, parents pass data to children through props. A "special" prop of type function can be passed down to a child. At the time of a relevant event (eg, user interaction) the child can then call this function as a callback. 
+For a child to talk back to a parent (unacceptable, I know!), 
+it must first receive a mechanism to communicate back from its parent. 
+As we learned, parents pass data to children through props. 
+A "special" prop of type function can be passed down to a child. 
+At the time of a relevant event (eg, user interaction) the child can then call this function as a callback. 
 
 class Parent extends React.Component {     
 constructor(props) {         
@@ -62,7 +69,8 @@ Add One More
 } 
 
  A functional component is just a plain JavaScript function which accepts props as an argument and returns a React element.
- A class component requires you to extend from React.Component and create a render function which returns a React element. This requires more code but will also give you some benefits which you will see later on.
+ A class component requires you to extend from React.Component and create a render function which returns a React element. 
+ This requires more code but will also give you some benefits which you will see later on.
  
  Functional Components - 
 => Functional because they are basically functions
@@ -95,7 +103,10 @@ class Welcome extends React.Component {
 
 
 Component Constructor
-The constructor function is also where you honor the inheritance of the parent component by including the super() statement, which executes the parent component's constructor function, and your component has access to all the functions of the parent component.
+The constructor function is also where you honor the inheritance of the parent component by including the super() statement, 
+which executes the parent component's constructor function, and your component has access to all the functions of the 
+parent component.
+
 class Car extends React.Component {
   constructor() {
     super();
@@ -105,35 +116,3 @@ class Car extends React.Component {
     return <h2>I am a {this.state.color} Car!</h2>;
   }
 }
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

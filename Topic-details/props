@@ -1,4 +1,5 @@
-React allows us to pass information to a Component using something called props (stands for properties). Props are basically kind of global variable or object. 
+React allows us to pass information to a Component using something called props (stands for properties). 
+Props are basically kind of global variable or object. 
 
 class DemoComponent extends React.Component{ 
     render(){ 
@@ -42,6 +43,7 @@ This is one of the coolest features of React. We can make components to interact
 We will consider two components Parent and Children to explain this. 
 We will pass some information as props from our Parent component to the Child component.
 We can pass as many props as we want to a component.
+
 class Parent extends React.Component{ 
     render(){ 
         return( 
