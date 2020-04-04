@@ -1,0 +1,11 @@
+.UserOutput {
+    margin: 10px;
+}
+
+.UserOutput .paragraph {
+    border: 1px solid #b5b5b5;
+    padding: 30px;
+    float: left;
+    width: 30%;
+    margin: 10px;
+}
