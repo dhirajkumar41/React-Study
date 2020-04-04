@@ -1,0 +1,151 @@
+function hookCounterOne(){
+  const [name , setName] = useState('')
+  const [count , setCount] =  useState('');
+  
+  useEffect(()=>{
+    document.title= $(count)
+  });
+
+  
+  return(
+    <div>
+      <input type = 'text' value = {name} onChange = { e=> setName(e.target.value)}>
+      </div>
+      <button Onclick = {() =>setCount(count+1)}>click {count}</button>
+  );
+}
+
+Run effects only once =>
+function hookMouse(){
+  const [x,setX]= useState(0);
+  const[y,setY]= useState(0);
+  useEffect(e =>{
+    window.addEventListner('MouseMove',logMousePosition)
+  },[])
+  const logMousePosition = e =>{
+    setx(e.clientX)
+    sety(e.clientY)
+  }
+  return(
+    <div>
+      hook x={x} y= {y}
+      </div>
+  )
+}
+useEffect with cleanup =>
+function hookMouse(){
+  const [x,setX]= useState(0);
+  const[y,setY]= useState(0);
+  const[display, setDisply] = useState(0);
+  useEffect(e =>{
+    window.addEventListner('MouseMove',logMousePosition)
+  }
+ window.removeEventListener(--)
+            ,[])
+  const logMousePosition = e =>{
+    setx(e.clientX)
+    sety(e.clientY)
+  }
+  return(
+    <div>
+      <button onClick = {()=>setDisplay(!display)}>toggleDisplay</button>
+      hook x={x} y= {y}
+      </div>
+  )
+}
+useEffect with incorrect dependency => for prevount we don't need to pass the count in array in function useEffect
+function intervalDependency(){
+  const [count, setCount] = usestate(0)
+  const tick = () => {
+    setcount(count+1)
+  }
+  usEffect = () =>{
+    const interval= setInterval (tick,1000)
+    return (
+      clearInterval(interval)
+    )
+  },[count]
+  }
+  return(){
+    <div>
+      {count}
+      </div>
+  }
+}Fetching data with useEffect Part 1 =>
+function DataFetching(){
+  const[posts, setPosts]= useState(0);
+  useEffect = () => {
+    axios.get('url')
+    .then(res =>
+          {
+      setPost(res.data)
+    }
+         )
+    .catch(err =>{
+      console.log('error')
+    },[])
+  }
+  return(
+    <div>
+      <ul>{
+          posts.map(post =>
+                    (
+            <li key = {post.id}>{post.item}</li>
+          ))
+        }
+      </ul>
+    </div>
+  )
+}
+
+ Fetching data with useEffect Part 2 for particular id =>
+function DataFetching(){
+  const[post, setPost]= useState(0);
+  const [id, setId]=useState(1);
+  useEffect = () => {
+    axios.get('url/${id}')
+    .then(res =>
+          {
+      setPost(res.data)
+    }
+         )
+    .catch(err =>{
+      console.log('error')
+    },[id])
+  }
+  return(
+    <div>
+      <input type= 'text' value ={id} onChnage = {e => setId(e.target.value)}/>
+      {post.item}
+    </div>
+  )
+}
+
+ Fetching data with useEffect Part 3 => on click button
+ function DataFetching(){
+  const[post, setPost]= useState(0);
+  const [id, setId]=useState(1);
+  const [idFromButtonClick, setIdFromButtonClick]=useState(1);
+  useEffect = () => {
+    axios.get('url/{idFromButtonClick}')
+    .then(res =>
+          {
+      setPost(res.data)
+    }
+         )
+    .catch(err =>{
+      console.log('error')
+    },[idFromButtonClick])
+  }
+  handlerClick(){
+    setIdFromButtonClick(id)
+  }
+  return(
+    <div>
+      <input type= 'text' value ={id} onChnage = {e => setId(e.target.value)}/>
+      <button type="button" onClick ={handlerClick}>click</button>
+      {post.item}
+    </div>
+  )
+}
+Context=>
