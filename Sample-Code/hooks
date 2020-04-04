@@ -149,3 +149,120 @@ function DataFetching(){
   )
 }
 Context=>
+
+export const userContext = React.createContext();
+export const channelContext = React.createContext();
+function App(){
+  return(
+    <div>
+      <userContext.provider value = {'vishwas'}>
+        <channelContext.provider value = {'vishwas'}>
+          
+        <componentC/>
+          <channelContext.provider/>
+     <userContext.provider/>     
+    </div>
+  )
+}
+componentC(){
+  return(
+    <div>
+        <componentE/>     
+    </div>
+  )
+}
+componentE(){
+  return(
+    <div>
+        <componentF/>     
+    </div>
+  )
+}
+componentF(){
+        return(
+        <div>
+            <userContext.consumer>
+              {
+                user =>{
+                  channel =>{
+                     return {user} {channel}
+                  }
+                 
+                }
+              }
+             </userContext.consumer> 
+          </div>
+            )
+      }      
+      
+	  2.=>
+	  export const userContext = React.createContext();
+export const channelContext = React.createContext();
+function App(){
+  return(
+    <div>
+      <userContext.provider value = {'vishwas'}>
+        <channelContext.provider value = {'vishwas'}>
+          
+        <componentC/>
+          <channelContext.provider/>
+     <userContext.provider/>     
+    </div>
+  )
+}
+componentC(){
+  return(
+    <div>
+        <componentE/>     
+    </div>
+  )
+}
+import {userContext, channelContext} from '../APP'
+componentE(){
+  const user =useContext(userContext)        
+  return(
+    <div>
+        {user}     
+    </div>
+  )
+}
+componentF(){
+        return(
+        <div>
+            <userContext.consumer>
+              {
+                user =>{
+                  channel =>{
+                     return {user} {channel}
+                  }
+                 
+                }
+              }
+             </userContext.consumer> 
+          </div>
+            )
+      }      
+      useReducer (simple state & action) =>
+	  const initialState = 0;
+const reducer = (state,action) =>{
+  switch(action){
+    case 'increment':
+      return state+1;
+    case 'decrement':
+      return state - 1;
+    case 'reset':
+      return initialState;
+    default:
+      return state
+  }
+}
+function CountOne(){
+  const [count, dispatch] = 
+        useReducer(reducer, initialState);
+  return(
+    <div>
+      <h1>{count}</div>
+      <button type='button' onClick = {dispatch('increment')}>Increment</button>
+    </div>
+  )
+}
