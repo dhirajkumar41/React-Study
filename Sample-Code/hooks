@@ -266,3 +266,191 @@ function CountOne(){
     </div>
   )
 }
+
+Multiple useReducers =>
+const initialState = ;
+const Reducer =(state, action)=>{
+  switch(ation)
+    case 'increment':
+    return state+1
+    case 'decrement':
+    return state-1
+    case 'reset':
+    return initialState
+    defaulf:
+    return 0
+}
+function App(){
+  export const countContext = React.createContext();  
+  const [count, dispatch] = useReducer(Reducer, initialState);
+  return(
+    <countContext.provider value=({countState:count, countDisatch:dispatch})>
+    <div>{count}
+    <ComponentA />
+      </div>
+      </countContext.provider>
+  )
+}
+function A(){
+  const countContext = useContext(countContext)
+  return(
+    <div><button onClick = () =>countContext.countDispatch('increment')>Increment</button></div>
+  )
+}  
+
+Fetching data with useReducer part 1 =>
+function fetchData(){
+  const[loading, setloading]=useState(true)
+  const[error,seterror]=useState('')
+  const[post,setpost]=useState({})
+  useEffect(()=>{
+    axios.get('url')
+    .then(reponse =>{
+      setloading('false')
+      setpost(reponse.data)
+      seterror('')
+    })
+    .catch(error=>{
+      setloading('false')
+      setpost({})
+      seterror('error')
+    })
+  },[])
+  return(
+    <div>
+      {loading?loading:post.title}
+    </div>
+  )
+}
+Fetching data with useReducer part 2=> with useReducer
+const initialState = {
+  loading: true;
+  error:'';
+  post: {};
+}
+const reducer = (state, action) =>{
+  switch(action.type)
+    case('success')
+    return{
+      loading: 'true'
+      post: action:payload
+      error: ''
+    }
+    case('error')
+    return{
+      loading: 'true'
+      post: ''
+      error: 'something went wrong'
+    }
+}
+function fetchData(){
+  const [state,dispatch] = useReducer(reducer, initialState)
+  useEffect(()=>{
+    axios.get('url')
+    .then(reponse =>{
+      dispatch({type:success,payload:response.data})
+    })
+    .catch(error=>{
+      dispatch({type:error})
+    })
+  },[])
+  return(
+    <div>
+      {state.loading?state.loading.title}
+    </div>
+  )
+}
+usecallback hook=
+function ParentComponent(){
+  const [age, setage]= useState(25);
+  incrementage=usecallback(()=>{
+    setage(age*10)
+  },[age])
+  return(
+    <count type = age count={age}/>
+    <button handleClick={incrementage}/>
+  )
+}
+function count({text,count}){
+  return <div>{text}{count}</div>
+}
+export default React.memo(count)
+
+
+useMemo =>
+function Counter(){
+  const[countone, setcountone]=useState(0);
+  const[counttwo, setcounttwo]=useState(0)
+  const incrementOne = () => {
+    setcounterone(countone+1)    
+  }
+   const incrementtwo = () => {
+    setcountertwo(counttwo+1)    
+  }
+   const isEven = useMemo(
+     ()=>{
+     let i=0
+     while(i<20000000)i++
+       return counterOne % 2===0
+   },[counterOne]
+   )
+   return(
+     <div>
+       <button onClick={incrementOne}>{counterone}</button>
+       <span>{isEven?'Even':'Odd'}</span>
+       </div>
+   )
+}
+useRef Hook =>
+function Reftimer(){
+  const[timer, settimer] = useState(0);
+  const intervalRef = useRef();
+  const intervalRef = setInterval(()=>{
+    settimer(prevtimer=>prevtimer+1)
+  },1000)
+  return()=>{
+    clearInterval(intervalRef)
+  }
+  return(
+    <div>
+      <button onClick=()=>clearInterval(intervalRef)>clear</button>
+    </div>
+  )
+}
+
+useDocumentTitle Custom Hook=>
+
+function useInput(initialState){
+  const[value,setvalue] = useState(initialState);
+  const reset = () =>{
+    setvalue(initialState)
+  }
+  const bind ={
+    value,
+    onChange = e =>{
+    setvalue(e.target.value)
+  }
+    
+  }
+  return (value, bind, reset)
+}
+function UseForm(){
+  const[firstName, setFirstName,] = setState('');
+  const[lastName, setLastName,] = setState('');
+  const [firstName, setFirstName, resetFirstName] = userInut('');
+  const [lastName, setLastName, resetLastName] = userInut('');
+  
+  const submitHandler = e => {
+    e.preventDefault();
+    resetFirstName()
+    resetLastName()
+  }
+  return(
+    <div>
+      <form onSubit = {submitHandler}>
+      <input type = 'text' {...bindFirstName}/>
+         <input type = 'text' {...bindLastName}/>
+           <submit type= 'submit'>
+      </div>
+  )
+}
